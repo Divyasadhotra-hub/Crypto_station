@@ -164,7 +164,9 @@ export default function CoinsTable() {
                         </TableCell>
                         <TableCell align="right">
                           {symbol}{" "}
-                          {numberWithCommas(row.current_price.toFixed(2))}
+                          {row.current_price != null
+  ? numberWithCommas(row.current_price.toFixed(2))
+  : "N/A"}
                         </TableCell>
                         <TableCell
                           align="right"
@@ -174,13 +176,17 @@ export default function CoinsTable() {
                           }}
                         >
                           {profit && "+"}
-                          {row.price_change_percentage_24h.toFixed(2)}%
+                          {row.price_change_percentage_24h != null
+                          ? row.price_change_percentage_24h.toFixed(2)
+                          : "0.00"}%
                         </TableCell>
                         <TableCell align="right">
                           {symbol}{" "}
-                          {numberWithCommas(
-                            row.market_cap.toString().slice(0, -6)
-                          )}
+                          {row.market_cap != null
+  ? numberWithCommas(
+      row.market_cap.toString().slice(0, -6)
+    )
+  : "N/A"}
                           M
                         </TableCell>
                       </TableRow>
